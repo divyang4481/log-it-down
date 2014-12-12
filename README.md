@@ -1,7 +1,7 @@
 logItDown
 ===========
-[![Build Status](https://travis-ci.org/ukupat/log-it-down.svg)](https://travis-ci.org/ukupat/log-it-down)
-[![Coverage Status](https://coveralls.io/repos/ukupat/log-it-down/badge.png?branch=master)](https://coveralls.io/r/ukupat/log-it-down?branch=master)
+[![Build Status](https://travis-ci.org/transferwise/log-it-down.svg)](https://travis-ci.org/transferwise/log-it-down)
+[![Coverage Status](https://coveralls.io/repos/transferwise/log-it-down/badge.png)](https://coveralls.io/r/transferwise/log-it-down)
 
 logItDown is an AngularJS module that collects all your **$log** and **$exceptionHandler** messages into a service for later inspection.
 
@@ -95,7 +95,8 @@ angular.module('logItDownDemo').factory('$exceptionHandler', function (logCollec
 		// This will create a new tab "History" with a log row @Bugsnag
 		Bugsnag.metaData = {
 			history: {
-				log: logCollector.getHistoryAsString(true, 10) // Gets last 10 log and resets collected data
+				// Gets last 10 log and resets collected data
+				log: logCollector.getHistoryAsString(true, 10) 
 			}
 		};
 		Bugsnag.notifyException(exception);
@@ -109,7 +110,8 @@ angular.module('logItDownDemo').controller('DemoController', function ($scope, $
 		$scope.data = null;
 
 		if ($scope.data === null) {
-			logCollector.warn('Data need to be a array'); // logCollector service doesn't print messages to the browser console
+			// logCollector service doesn't print messages to the browser console
+			logCollector.warn('Data need to be a array'); 
 			$scope.data = ['bit', 'bitbit'];
 		}
 		var elem = $scope.data.doSomething(); // Lets cause an exception
