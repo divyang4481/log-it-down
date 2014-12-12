@@ -1,7 +1,7 @@
 logItDown
 ===========
 [![Build Status](https://travis-ci.org/transferwise/log-it-down.svg)](https://travis-ci.org/transferwise/log-it-down)
-[![Coverage Status](https://coveralls.io/repos/transferwise/log-it-down/badge.png)](https://coveralls.io/r/transferwise/log-it-down)
+[![Coverage Status](https://coveralls.io/repos/transferwise/log-it-down/badge.png?branch=master)](https://coveralls.io/r/transferwise/log-it-down?branch=master)
 
 logItDown is an AngularJS module that collects all your **$log** and **$exceptionHandler** messages into a service for later inspection.
 
