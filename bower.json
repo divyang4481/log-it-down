@@ -1,0 +1,31 @@
+{
+	"name": "logItDown",
+	"description": "logItDown is an AngularJS module that collects all your $log and $exceptionHandler messages into a service for later inspection.",
+	"keywords": ["angularjs", "log", "$log", "collect", "module", "exceptionHandler", "bugsnag", "inspect"],
+	"version": "0.1.0",
+	"license": "Apache 2.0",
+	"homepage": "https://github.com/transferwise/log-it-down",
+	"authors": [
+		{
+			"name": "Uku Pattak",
+			"email": "uku.pattak@transferwise.com"
+		}
+	],
+	"main": "./dist/logItDown.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/transferwise/log-it-down.git"
+	},
+	"dependencies": {
+		"angular": "~1.x.x"
+	},
+	"ignore": [
+		"**/.*",
+		"log",
+		"node_modules",
+		"test",
+		"Gruntfile.js",
+		"karma.conf.js",
+		"package.json"
+	]
+}
