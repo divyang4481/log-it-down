@@ -8,6 +8,12 @@ describe('logItDown module spec', function () {
 	beforeEach(inject(function (_$log_, logCollector) {
 		$log = _$log_;
 		service = logCollector;
+
+		var mockDate = new Date(2014, 9, 26, 1, 2, 3, 443);
+
+		spyOn(window, 'Date').and.callFake(function () {
+			return mockDate;
+		});
 	}));
 
 	describe('overriding $log', function () {
@@ -82,11 +88,6 @@ describe('logItDown module spec', function () {
 		});
 
 		it('should log down current time with time and date', function () {
-			var mockDate = new Date(2014, 9, 26, 1, 2, 3, 443);
-
-			spyOn(window, 'Date').and.callFake(function () {
-				return mockDate;
-			});
 			service.log('Logged message');
 
 			expect(historyFirstLog().time).toBe('01:02:03.443 26-10-2014');
@@ -171,19 +172,34 @@ describe('logItDown module spec', function () {
 			});
 		});
 
-		it('should get history as string separated by \n', function () {
-			var mockDate = new Date(2014, 9, 26, 1, 2, 3, 443);
+		describe('getting history as string', function () {
 
-			spyOn(window, 'Date').and.callFake(function () {
-				return mockDate;
+			it('should get history as string separated by \n', function () {
+				service.info('Info log');
+				service.log('Log log');
+				service.error('Error log');
+
+				expect(service.getHistoryAsString()).toBe(
+					'01:02:03.443 26-10-2014 ERROR  Error log\n01:02:03.443 26-10-2014   LOG  Log log\n01:02:03.443 26-10-2014  INFO  Info log\n'
+				);
 			});
-			service.info('Info log');
-			service.log('Log log');
-			service.error('Error log');
 
-			expect(service.getHistoryAsString()).toBe(
-				'01:02:03.443 26-10-2014 ERROR  Error log\n01:02:03.443 26-10-2014   LOG  Log log\n01:02:03.443 26-10-2014  INFO  Info log\n'
-			);
+			it('should get 1 out of 2 log messages from history when limiting to 1', function () {
+				service.log('Log log');
+				service.error('Error log');
+
+				expect(service.getHistoryAsString(false, 1)).toBe(
+					'01:02:03.443 26-10-2014 ERROR  Error log\n'
+				);
+			});
+
+			it('should reset history after get', function () {
+				service.log('Log log');
+				service.error('Error log');
+				service.getHistoryAsString(true);
+
+				expect(service.getHistory().length).toBe(0);
+			});
 		});
 
 		var historyFirstLog = function () {
