@@ -3,7 +3,9 @@ logItDown
 [![Build Status](https://travis-ci.org/transferwise/log-it-down.svg)](https://travis-ci.org/transferwise/log-it-down)
 [![Coverage Status](https://coveralls.io/repos/transferwise/log-it-down/badge.png?branch=master)](https://coveralls.io/r/transferwise/log-it-down?branch=master)
 
-logItDown is an AngularJS module that collects all your **$log** and **$exceptionHandler** messages into a service for later inspection.
+**logItDown** is an **AngularJS** module that collects all your **$log** and **$exceptionHandler** messages into a service for later inspection.
+
+This gives you a back-end look a like log, where you can see what happened before the exception.
 
 ## Installation
 
@@ -85,7 +87,7 @@ logCollector.getHistoryAsString(reset, limit);
 
 ## Example usage
 
-We are going to integrate this module with [Bugsnag](https://github.com/bugsnag/bugsnag-js) that captures our application JS errors. It is easy to collect all our logs with logItDown and send them to Bugsnag as a metadata. This gives us a back-end look a like log, where we can see what happened before the exception. More info [@Bugsnag](https://bugsnag.com/docs).
+We are going to integrate this module with [Bugsnag](https://github.com/bugsnag/bugsnag-js) that captures our application JS errors. It is easy to collect all the log messages with **logItDown** and send them to **Bugsnag** as a `metadata`. More info [@Bugsnag](https://bugsnag.com/docs).
 
 ````javascript
 
