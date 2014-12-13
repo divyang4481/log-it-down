@@ -1,5 +1,5 @@
 /**
- * logItDown v0.1.0
+ * logItDown v0.1.1
  *
  * Copyright 2014 Transferwise Ltd
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -84,7 +84,7 @@
 		};
 
 		this.getHistoryAsString = function (reset, limit) {
-			return constructHistoryString(getLimitedHistory(limit, reset));
+			return constructHistoryString(getLimitedHistory(reset, limit));
 		};
 
 		var log = function (message, type) {
