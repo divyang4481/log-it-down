@@ -74,6 +74,10 @@
 			log(arguments, 'ERROR');
 		};
 
+		this.getHistoryAsString = function (reset, limit) {
+			return constructHistoryString(this.getHistory(reset, limit));
+		};
+
 		this.getHistory = function (reset, limit) {
 			var ret = getLimitedHistory(limit);
 
@@ -81,10 +85,6 @@
 				history = [];
 			}
 			return ret;
-		};
-
-		this.getHistoryAsString = function (reset, limit) {
-			return constructHistoryString(getLimitedHistory(reset, limit));
 		};
 
 		var log = function (message, type) {
