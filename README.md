@@ -85,6 +85,12 @@ logCollector.getHistory(reset, limit);
 logCollector.getHistoryAsString(reset, limit); 
 ````
 
+There is a limit on how many logs are saved. If this number is exceeded then it will start pushing out logs from front. Default limit is **100**, but you can set it by yourself with this method
+
+````javascript
+logCollector.setHistoryLimit(limit);
+````
+
 ## Example usage
 
 We are going to integrate this module with [Bugsnag](https://github.com/bugsnag/bugsnag-js) that captures our application JS errors. It is easy to collect all the log messages with **logItDown** and send them to **Bugsnag** as a `metadata`. More info [@Bugsnag](https://bugsnag.com/docs).
