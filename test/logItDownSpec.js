@@ -148,6 +148,19 @@ describe('logItDown module spec', function () {
 
 			describe('limiting history', function () {
 
+				it('should limit history with global limit', function () {
+					service.setHistoryLimit(2);
+					service.log('First log');
+					service.info('Second log');
+					service.debug('Third log');
+
+					var history = service.getHistory();
+
+					expect(history.length).toBe(2);
+					expect(history[0].message).toBe('Third log');
+					expect(history[1].message).toBe('Second log');
+				});
+
 				it('should limit wanted number of logs with legit argument', function () {
 					service.log('First log');
 					service.log('Second log');

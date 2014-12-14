@@ -53,6 +53,7 @@
 
 	angular.module('logItDown').service('logCollector', ['$filter', function ($filter) {
 		var history = [];
+		var historyLimit = 100;
 
 		this.log = function () {
 			log(arguments, 'LOG');
@@ -74,6 +75,10 @@
 			log(arguments, 'ERROR');
 		};
 
+		this.setHistoryLimit = function (limit) {
+			historyLimit = limit;
+		};
+
 		this.getHistoryAsString = function (reset, limit) {
 			return constructHistoryString(this.getHistory(reset, limit));
 		};
@@ -93,6 +98,9 @@
 				type: type,
 				message: parseLogMessage(message)
 			});
+			if (history.length > historyLimit) {
+				history.shift();
+			}
 		};
 
 		var parseLogMessage = function (message) {
