@@ -107,6 +107,9 @@
 			var ret = [];
 
 			angular.forEach(message, function (arg) {
+				if (arg instanceof Error) {
+					arg = arg.message;
+				}
 				if (typeof arg === 'object'){
 					arg = JSON.stringify(arg);
 				}
