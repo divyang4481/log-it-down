@@ -2,7 +2,7 @@
 	"name": "logItDown",
 	"description": "logItDown is an AngularJS module that collects all your $log and $exceptionHandler messages into a service for later inspection.",
 	"keywords": ["angularjs", "log", "$log", "collect", "module", "exceptionHandler", "bugsnag", "inspect"],
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"license": "Apache 2.0",
 	"homepage": "https://github.com/transferwise/log-it-down",
 	"authors": [

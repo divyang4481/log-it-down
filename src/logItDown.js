@@ -1,5 +1,5 @@
 /**
- * logItDown v0.1.1
+ * logItDown v0.1.2
  *
  * Copyright 2014 Transferwise Ltd
  * Licensed under the Apache License, Version 2.0 (the "License");
