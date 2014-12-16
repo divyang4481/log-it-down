@@ -115,7 +115,10 @@ describe('logItDown module spec', function () {
 			});
 
 			it('should get exception message from Error object', function () {
-				service.log(new Error('New error'));
+				var error = new Error('New error');
+				error.stack = 'New error';
+				service.log(error);
+
 				expect(historyFirstLog().message).toBe('New error');
 			});
 

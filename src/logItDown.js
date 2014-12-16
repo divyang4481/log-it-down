@@ -108,7 +108,7 @@
 
 			for (var i = 0; i < args.length; i ++) {
 				if (args[i] instanceof Error) {
-					message.push(args[i].message);
+					message.push(args[i].stack);
 					break;
 				} else if (typeof args[i] === 'object'){
 					message.push(JSON.stringify(args[i]));
