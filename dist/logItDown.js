@@ -103,19 +103,20 @@
 			}
 		};
 
-		var parseLogMessage = function (message) {
-			var ret = [];
+		var parseLogMessage = function (args) {
+			var message = [];
 
-			angular.forEach(message, function (arg) {
-				if (arg instanceof Error) {
-					arg = arg.message;
+			for (var i = 0; i < args.length; i ++) {
+				if (args[i] instanceof Error) {
+					message.push(args[i].message);
+					break;
+				} else if (typeof args[i] === 'object'){
+					message.push(JSON.stringify(args[i]));
+				} else {
+					message.push(args[i]);
 				}
-				if (typeof arg === 'object'){
-					arg = JSON.stringify(arg);
-				}
-				ret.push(arg);
-			});
-			return ret.join('\n');
+			}
+			return message.join('\n');
 		};
 
 		var getTimeStamp = function () {
