@@ -114,6 +114,11 @@ describe('logItDown module spec', function () {
 				expect(historyFirstLog().message).toBe('{"test":{"objects":"now"}}');
 			});
 
+			it('should get exception message from Error object', function () {
+				service.log(new Error('New error'));
+				expect(historyFirstLog().message).toBe('New error');
+			});
+
 			it('should stringify messages that contain arrays', function () {
 				service.log(['bunch', 'off', ['stuff']]);
 				expect(historyFirstLog().message).toBe('["bunch","off",["stuff"]]');
