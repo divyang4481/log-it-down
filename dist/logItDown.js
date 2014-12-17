@@ -42,13 +42,6 @@
 				}
 			};
 		}]);
-
-		$provide.decorator('$exceptionHandler', ['$delegate', 'logCollector', function ($delegate, logCollector) {
-			return function(exception, cause) {
-				$delegate(exception, cause);
-				logCollector.error.apply(null, exception.message);
-			};
-		}]);
 	}]);
 
 	angular.module('logItDown').service('logCollector', ['$filter', function ($filter) {
